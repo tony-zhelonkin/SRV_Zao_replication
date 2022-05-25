@@ -1,0 +1,81 @@
+---
+title: "Phylogenetics_SRV_viruses"
+author: "Anton Zhelonkin"
+date: "5/24/2022"
+output: html_document
+---
+
+## Specifications
+```{r}
+version
+```
+
+## Requirements
+```{r}
+if (!("reutils" %in% installed.packages()))
+install.packages("reutils")
+if (!("XML" %in% installed.packages()))
+install.packages("XML")
+if (!("RCurl" %in% installed.packages()))
+install.packages("RCurl")
+
+library(reutils)
+library(XML)
+library(RCurl)
+```
+
+# Description 
+This is a replication analysis of a paper by Zao et al. *"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*. The plan is simple: 
+* download sequences by assesion numbers from GenBank (db-nucleotide)
+* align sequences of the newly discovered viral strain SRV 
+* draw a phylogenetic tree comparing the new strain with the previously known strains 
+
+# 1. Data preparation
+### Preparing for data extraction 
+```{r}
+options(reutils.email = "good.tony@yandex.ru") # i`m a real person
+```
+
+## find UIDs
+```{r}
+# newly discovered SRV viral whole genomes search by assession number given in the article 
+srv_new1 <- esearch(db = "nucleotide", term = "KU605777")
+srv_new2 <- esearch(db = "nucleotide", term = "KU605778")
+srv_new3 <- esearch(db = "nucleotide", term = "KU605779")
+srv_new4 <- esearch(db = "nucleotide", term = "KU605780")
+
+# previously known SRV viruses 
+srv1 <- esearch(db = "nucleotide", term = "M11841")
+srv2 <- esearch(db = "nucleotide", term = "AF126467")
+srv3 <- esearch(db = "nucleotide", term = "M12349")
+srv4 <- esearch(db = "nucleotide", term = "FJ971077")
+srv5 <- esearch(db = "nucleotide", term = "AB611707")
+srv6_env <- esearch(db = "nucleotide", term = "AY598468")
+srv7_pol <- esearch(db = "nucleotide", term = "AY594212")
+serv <- esearch(db = "nucleotide", term = "U85505")
+
+# all UIDs vector
+uid <- c(srv_new1[1], srv_new2[1], srv_new3[1], srv_new4[1],
+         srv1[1], srv2[1], srv3[1], srv4[1], srv5[1], srv6_env[1], srv7_pol[1], serv[1])
+```
+
+## extract FASTA sequences by uids
+```{r}
+srv_new <- efetch(uid[1:4], db = "nucleotide", rettype = "fasta", retmode = "text")
+
+srv_seq_f <- efetch(uid[1:12], db = "nucleotide", rettype = "fasta", retmode = "text")
+```
+
+## write FASTA file with new SRV genomes and all known SRV viruses with the newly discovered ones 
+```{r}
+write(content(srv_new), "srv_new_sequences")
+
+write(content(srv_seq_f), "srv_all_sequences")
+```
+
+
+
+
+
+
+
