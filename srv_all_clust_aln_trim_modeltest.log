@@ -4,7 +4,8 @@ Memory:         5.72GB
 Extensions:     AVX
 
 WARNING: MSA has not enough sites to infer reliable results
-Creating new checkpoint file: srv_all_clust_aln_trim_modeltest.ckp
+Validating binary checkpoint
+OK!
 --------------------------------------------------------------------------------
 ModelTest-NG vx.y.z
 
@@ -58,7 +59,7 @@ Partition 1/1
 
  ----ID---  ----MODEL---- ---Time--- -Elapsed--- -------LnL------- -Alpha- -P-inv-
 
-Computation of likelihood scores completed. It took 0h:00:40
+Computation of likelihood scores completed. It took 0h:00:00
 
 BIC       model              K            lnL          score          delta    weight
 --------------------------------------------------------------------------------
