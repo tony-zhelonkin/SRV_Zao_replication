@@ -22,7 +22,13 @@ Objectives
 
 Software used
 -------------------
-- 
+- R version 4.2.0 (2022-04-22) 
+- R package reutils_0.2.3 for NCBI data extraction
+- CLUSTAL 2.1 Multiple Sequence Alignments for multiple alignment
+- trimAl v1.4.rev15 build[2013-12-17] for alignment trimming
+- modeltest 0.1.7-0 for testing models of evolution
+- RAxML-NG v. 0.9.0 for finding the best tree under maximum likelihood
+- R package ggtree_3.4.0 to draw the phylogenetic tree
 
 
 
