@@ -57,6 +57,9 @@ the **'data/SRV_2022-05-24.Rmd'**
 > **srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")**
 > **ggtree(srv_tr) + geom_tiplab()** 
  
+*N.B!* All R commands extracting data from NCBI and visualising resulting trees are provided in **'data/SRV_2022-05-24.Rmd'** 
+and all terminal command are provided in the **'/phyl_analysis.sh'**
+ 
 Resulting phylogenetic trees 
 ------------------- 
 The script for visualisation is available in data/SRV_2022-05-24.Rmd
