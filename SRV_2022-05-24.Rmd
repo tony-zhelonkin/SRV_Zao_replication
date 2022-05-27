@@ -17,14 +17,21 @@ version
 if (!("reutils" %in% installed.packages()))
 install.packages("reutils")
 library(reutils)
+
+
+if (!("ggtree" %in% installed.packages()))
+BiocManager::install("ggtree")
+library(ggtree)
+
 sessionInfo()
 ```
 
 # Description 
-This is a replication analysis of a paper by Zao et al. *"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*. The plan is simple: 
-* download sequences by assesion numbers from GenBank (db-nucleotide)
-* align sequences of the newly discovered viral strain SRV 
-* draw a phylogenetic tree comparing the new strain with the previously known strains 
+This is a replication analysis of a paper by Zao et al. *"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*.   
+The plan is simple:   
+* download sequences by assesion numbers from GenBank (db-nucleotide)  
+* align sequences of the newly discovered viral strain SRV   
+* draw a phylogenetic tree comparing the new strain with the previously known strains   
 
 # 1. Data preparation
 ### Preparing for data extraction 
@@ -32,7 +39,7 @@ This is a replication analysis of a paper by Zao et al. *"A novel simian retrovi
 options(reutils.email = "my_email@email.com") # i`m a real person
 ```
 
-## find UIDs
+## Find UIDs
 ```{r}
 # newly discovered SRV viral whole genomes search by assession number given in the article 
 srv_new1 <- esearch(db = "nucleotide", term = "KU605777")
@@ -55,14 +62,14 @@ uid <- c(srv_new1[1], srv_new2[1], srv_new3[1], srv_new4[1],
          srv1[1], srv2[1], srv3[1], srv4[1], srv5[1], srv6_env[1], srv7_pol[1], serv[1])
 ```
 
-## extract FASTA sequences by uids
+## Extract FASTA sequences by uids
 ```{r}
 srv_new <- efetch(uid[1:4], db = "nucleotide", rettype = "fasta", retmode = "text")
 
 srv_seq_f <- efetch(uid[1:12], db = "nucleotide", rettype = "fasta", retmode = "text")
 ```
 
-## write FASTA file with new SRV genomes and all known SRV viruses with the newly discovered ones 
+## Write FASTA file with new SRV genomes and all known SRV viruses with the newly discovered ones 
 ```{r}
 write(content(srv_new), "srv_new_sequences")
 
@@ -71,16 +78,7 @@ write(content(srv_seq_f), "srv_all_sequences")
 
 
 
-# Drawing tree based on modeltest-raxml pipeline
-
-```{r}
-if (!("ggtree" %in% installed.packages()))
-BiocManager::install("ggtree")
-
-library(ggtree)
-```
-
-
+# 2. Drawing tree based on modeltest-raxml pipeline
 ```{r}
 srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")
 ggtree(srv_tr) + geom_tiplab() + xlim(0,0.8)
@@ -108,7 +106,7 @@ ggtree(srv_tr_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,0.8) + geom_treescale
 dev.off()
 ```
 
-# Drawing tree based on PhyMl3 Bootstrap 100 
+# 3. Drawing tree based on PhyMl3 Bootstrap 
 Analysis run at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
 * Substitution model: GTR  
 * Bootstrapped data sets: 100
