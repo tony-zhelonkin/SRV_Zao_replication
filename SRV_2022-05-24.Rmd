@@ -144,4 +144,10 @@ ggtree(phy_tree_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,1.8) +
   geom_treescale(width = 0.05)
 dev.off()
 ```
+```{r}
+png("phyml3_all_tree_res.png", width = 1200, height = 600)
+ggtree(phy_tree_ren, ladderize=TRUE, size = 1.2)+ geom_tiplab(size = 10) + xlim(0,1.8) + 
+  geom_treescale(width = 0.05, fontsize = 10, linesize = 1.0)
+dev.off()
+```
 
