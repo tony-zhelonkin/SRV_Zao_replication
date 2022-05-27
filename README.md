@@ -30,15 +30,48 @@ Software used
 - RAxML-NG v. 0.9.0 for finding the best tree under maximum likelihood
 - R package ggtree_3.4.0 to draw the phylogenetic tree
 
+Pipeline
+-------------------
+1. Sequences were extracted as fasta using reutils library for R. The script is provided in 
+the data/SRV_2022-05-24.Rmd
 
+2. Sequences were aligned using clustalw with the following terminal command 
+> **$ clustalw -INFILE=srv_all_sequences -OUTPUT=FASTA -OUTFILE=srv_all_clust_alignment.fa**
 
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/ugene_all_clust_hist_quality.png)
 
+3. Sequences were trimmed using trimal 
+> **$ trimal -in srv_all_clust_alignment.fa -out srv_all_clust_aln_trim.fa**
 
+4. Evolutionary models were tested using **modeltest-ng**
+> **$ modeltest-ng -i srv_all_clust_aln_trim.fa -o srv_all_clust_aln_trim_modeltest**
+
+5. The best tree searched for using raxml
+> **$ raxml-ng --msa srv_all_clust_aln_trim.fa --model GTR+I+G4 --prefix srv_all_raxml --threads 2 --seed 222**
+
+6. The tree was visualised using R ggtree
+> **srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")**
+> **ggtree(srv_tr) + geom_tiplab() + xlim(0,2)**
+The script for visualisation is available in data/SRV_2022-05-24.Rmd
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_bestTree.png)
-
-
+The tips of the tree were renamed according to the SRV subtype
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_named_bestTree.png)
+
+As the modeltest-raxml tree was somewhat different from the original tree by Zao et al. an attempt was made 
+to build a PhyMl3 tree (as described by the authors) with 100 bootstraps 
+at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
+
+The resulting tree was visualised using ggtree. All tree scripts visualisations are available in data/SRV_2022-05-24.Rmd
+
+
+
+
+
+
+
+
+
+
 
 
 
