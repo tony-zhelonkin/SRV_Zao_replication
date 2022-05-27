@@ -65,6 +65,9 @@ at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
 The resulting tree was visualised using ggtree. All tree scripts visualisations are available in data/SRV_2022-05-24.Rmd  
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/phyml3_all_tree.png) 
 
+After some tweaks the final PhyMl tree was made slightly more publishable 
+![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/phyml3_all_tree_res.png) 
+
 As expeted the PhyMl3 tree was closest to what the authors of the original paper provided 
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/Zao_original_tree2.png) 
 
