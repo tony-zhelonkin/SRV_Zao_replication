@@ -21,7 +21,6 @@ Objectives
 - Download SRV viruses sequences using eutils
 - Align sequences using clustalw
 - Draw a phylogenetic tree of SRV viruses
-- Compare results from different differential expression analysis tools inside Hobotnica
 
 Software used
 -------------------
