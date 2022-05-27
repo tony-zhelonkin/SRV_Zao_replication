@@ -20,9 +20,12 @@ if (!("RCurl" %in% installed.packages()))
 install.packages("RCurl")
 
 library(reutils)
-library(XML)
-library(RCurl)
 ```
+
+```{r}
+sessionInfo()
+```
+
 
 # Description 
 This is a replication analysis of a paper by Zao et al. *"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*. The plan is simple: 
@@ -75,7 +78,7 @@ write(content(srv_seq_f), "srv_all_sequences")
 
 
 
-# Drawing tree
+# Drawing tree based on modeltest-raxml pipeline
 
 ```{r}
 if (!("ggtree" %in% installed.packages()))
@@ -87,12 +90,12 @@ library(ggtree)
 
 ```{r}
 srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")
-ggtree(srv_tr) + geom_tiplab() + xlim(0,2)
+ggtree(srv_tr) + geom_tiplab() + xlim(0,0.8)
 ```
 sabing tree
 ```{r}
 png("srv_all_raxml_bestTree.png")
-ggtree(srv_tr) + geom_tiplab() + xlim(0,2)
+ggtree(srv_tr) + geom_tiplab() + xlim(0,0.8)
 dev.off()
 ```
 
@@ -103,13 +106,42 @@ srv_tr_ren <- srv_tr
 srv_tr_ren$tip.label <- c("SRV-5", "SRV-4", "SRV8/TEX/2015/V2", "SRV8/TEX/2015/V1",
                           "SRV8/TEX/2015/V3", "SRV8/SUZ/2012", "SRV-3", "SRV-1", "SRV-7",
                           "SERV", "SRV-6", "SRV-2")
-ggtree(srv_tr_ren) + geom_tiplab() + xlim(0,2)
+ggtree(srv_tr_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,0.8) + geom_treescale(width = 0.05)
 ```
 saving tree
 ```{r}
 png("srv_all_raxml_named_bestTree.png")
-ggtree(srv_tr_ren) + geom_tiplab() + xlim(0,2)
+ggtree(srv_tr_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,0.8) + geom_treescale(width = 0.05)
 dev.off()
 ```
 
+# Drawing tree based on PhyMl3 Bootstrap 100 
+Analysis run at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
+* Substitution model: GTR  
+* Bootstrapped data sets: 100
+
+```{r}
+phy_tree <- read.tree("phyml3_all_tree.nwk")
+ggtree(phy_tree) + geom_tiplab() + xlim(0,2)
+```
+### Renaming tip labels in tree
+```{r}
+phy_tree_ren <- phy_tree
+phy_tree_ren$tip.label <- c("SRV-4", "SRV8/SUZ/2012", "SRV8/TEX/2015/V1",
+                            "SRV8/TEX/2015/V2", "SRV8/TEX/2015/V3", "SRV-5",
+                            "SRV-3", "SRV-1", "SRV-2", "SRV-6 env", "SERV",
+                            "SRV-7 pol")
+ggtree(phy_tree_ren, ladderize=TRUE, scale = 0.5)+ geom_tiplab() + xlim(0,2) + geom_treescale()
+```
+```{r}
+ggtree(phy_tree_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,1.8) + 
+  geom_treescale(width = 0.05)
+```
+saving tree
+```{r}
+png("phyml3_all_tree.png")
+ggtree(phy_tree_ren, ladderize=TRUE)+ geom_tiplab() + xlim(0,1.8) + 
+  geom_treescale(width = 0.05)
+dev.off()
+```
 
