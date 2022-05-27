@@ -7,7 +7,7 @@ What`s this all about?
 This is a phylogenetics minireplication analysis based on a paper by Zao et al. 
  ["A novel simian retrovirus subtype discovered in cynomolgus monkeys (*Macaca fascicularis*)"](https://www.microbiologyresearch.org/content/journal/jgv/10.1099/jgv.0.000601) 
  
-The miniproject was created as an exercise in in [Bioinformatics Institute](https://bioinf.me/en)
+The miniproject was created as an exercise in [Bioinformatics Institute](https://bioinf.me/en)
 
 Student
 - Anton Zhelonkin [@tony-zhelonkin](https://github.com/tony-zhelonkin)
