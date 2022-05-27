@@ -62,7 +62,13 @@ As the modeltest-raxml tree was somewhat different from the original tree by Zao
 to build a PhyMl3 tree (as described by the authors) with 100 bootstraps 
 at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
 
-The resulting tree was visualised using ggtree. All tree scripts visualisations are available in data/SRV_2022-05-24.Rmd
+The resulting tree was visualised using ggtree. All tree scripts visualisations are available in data/SRV_2022-05-24.Rmd  
+![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/phyml3_all_tree.png) 
+
+As expeted the PhyMl3 tree was closest to what the authors of the original paper provided 
+![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/Zao_original_tree2.png) 
+
+
 
 
 
