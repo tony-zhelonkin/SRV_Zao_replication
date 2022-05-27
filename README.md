@@ -53,7 +53,8 @@ the data/SRV_2022-05-24.Rmd
 > **srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")**
 > **ggtree(srv_tr) + geom_tiplab() + xlim(0,2)**
 The script for visualisation is available in data/SRV_2022-05-24.Rmd
-![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_bestTree.png)
+![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_bestTree.png) 
+
 The tips of the tree were renamed according to the SRV subtype
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_named_bestTree.png)
 
