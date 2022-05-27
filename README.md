@@ -58,7 +58,7 @@ the **'data/SRV_2022-05-24.Rmd'**
 > **ggtree(srv_tr) + geom_tiplab()** 
  
 *N.B!* All R commands extracting data from NCBI and visualising resulting trees are provided in **'data/SRV_2022-05-24.Rmd'** 
-and all terminal command are provided in the **'/phyl_analysis.sh'**
+and all terminal commands are provided in the **'/phyl_analysis.sh'**
  
 Resulting phylogenetic trees 
 ------------------- 
