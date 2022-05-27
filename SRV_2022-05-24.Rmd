@@ -2,7 +2,9 @@
 title: "Phylogenetics_SRV_viruses"
 author: "Anton Zhelonkin"
 date: "5/24/2022"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ## Specifications
@@ -14,18 +16,9 @@ version
 ```{r}
 if (!("reutils" %in% installed.packages()))
 install.packages("reutils")
-if (!("XML" %in% installed.packages()))
-install.packages("XML")
-if (!("RCurl" %in% installed.packages()))
-install.packages("RCurl")
-
 library(reutils)
-```
-
-```{r}
 sessionInfo()
 ```
-
 
 # Description 
 This is a replication analysis of a paper by Zao et al. *"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*. The plan is simple: 
@@ -36,7 +29,7 @@ This is a replication analysis of a paper by Zao et al. *"A novel simian retrovi
 # 1. Data preparation
 ### Preparing for data extraction 
 ```{r}
-options(reutils.email = "good.tony@yandex.ru") # i`m a real person
+options(reutils.email = "my_email@email.com") # i`m a real person
 ```
 
 ## find UIDs

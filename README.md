@@ -5,8 +5,11 @@ Zao et al Novel simian retrovirus replication phylogenetic analysis
 What`s this all about?
 -------------------
 This is a phylogenetics minireplication analysis based on a paper by Zao et al. 
-*"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*
+ [*"A novel simian retrovirus subtype discovered in cynomolgus monkeys (Macaca fascicularis)"*](https://www.microbiologyresearch.org/content/journal/jgv/10.1099/jgv.0.000601)
 The miniproject was created as an exercise in in [Bioinformatics Institute](https://bioinf.me/en)
+
+
+- Anton Zhelonkin [@tony-zhelonkin](https://github.com/tony-zhelonkin)
 
 Question under analysis
 -------------------
@@ -29,10 +32,12 @@ Software used
 - modeltest 0.1.7-0 for testing models of evolution
 - RAxML-NG v. 0.9.0 for finding the best tree under maximum likelihood
 - R package ggtree_3.4.0 to draw the phylogenetic tree
+- PhyMl3 at http://phylogeny.lirmm.fr/phylo_cgi/one_task.cgi?task_type=phyml
+
 
 Pipeline
 -------------------
-1. Sequences were extracted as fasta using reutils library for R. The script is provided in 
+1. Sequences were extracted from NCBI as fasta using reutils library for R. The script is provided in 
 the data/SRV_2022-05-24.Rmd
 
 2. Sequences were aligned using clustalw with the following terminal command 
@@ -51,7 +56,10 @@ the data/SRV_2022-05-24.Rmd
 
 6. The tree was visualised using R ggtree
 > **srv_tr <- read.tree("srv_all_raxml.raxml.bestTree")**
-> **ggtree(srv_tr) + geom_tiplab() + xlim(0,2)**
+> **ggtree(srv_tr) + geom_tiplab()** 
+ 
+Resulting phylogenetic trees 
+------------------- 
 The script for visualisation is available in data/SRV_2022-05-24.Rmd
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/srv_all_raxml_bestTree.png) 
 
@@ -68,9 +76,13 @@ The resulting tree was visualised using ggtree. All tree scripts visualisations 
 After some tweaks the final PhyMl tree was made slightly more publishable 
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/phyml3_all_tree_res.png) 
 
-As expeted the PhyMl3 tree was closest to what the authors of the original paper provided 
+As expeted the PhyMl3 tree was closest to what the authors of the original paper provided (fig. below)
 ![](https://github.com/tony-zhelonkin/SRV_Zao_replication/blob/main/Zao_original_tree2.png) 
 
+Conclusion
+-------------------
+No matter the tree replication method (modeltest-raxml or PhyML3) the main idea of Zao`s papers holds true. 
+Apperently the newly discovered SRV viruses are indeeed a distinct subtype that deserve to beare a name SRV-8
 
 
 
